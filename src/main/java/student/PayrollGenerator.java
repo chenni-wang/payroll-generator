@@ -53,10 +53,10 @@ public final class PayrollGenerator {
         List<String> employeeLines = FileUtil.readFileToList(arguments.getEmployeeFile());
         List<String> timeCards = FileUtil.readFileToList(arguments.getTimeCards());
 
-        List<IEmployee> employees = employeeLines.stream().map(Builder::buildEmployeeFromCSV)
+        List<IEmployee> employees = employeeLines.stream().map(Builder::buildEmployeeFromCSV).filter(e -> e != null)
                 .collect(Collectors.toList());
 
-        List<ITimeCard> timeCardList = timeCards.stream().map(Builder::buildTimeCardFromCSV)
+        List<ITimeCard> timeCardList = timeCards.stream().map(Builder::buildTimeCardFromCSV).filter(e -> e != null)
                 .collect(Collectors.toList());
 
         List<IPayStub> payStubs = new LinkedList<>();

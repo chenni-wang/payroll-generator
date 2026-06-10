@@ -22,7 +22,14 @@ public final class Builder {
      * @return the employee object
      */
     public static IEmployee buildEmployeeFromCSV(String csv) {
+        if (csv == null || csv.isBlank())
+            return null;
+
         String[] parts = csv.split(",");
+
+        if (parts.length != 7)
+            return null;
+
         try{
             String type = parts[0].trim();
             String name = parts[1].trim();
@@ -55,7 +62,13 @@ public final class Builder {
      * @return a TimeCard object
      */
     public static ITimeCard buildTimeCardFromCSV(String csv) {
+        if (csv == null || csv.isBlank())
+            return null;
+
         String[] parts = csv.split(",");
+
+        if (parts.length != 2)
+            return null;
 
         try{
             String id = parts[0].trim();

@@ -89,7 +89,7 @@ classDiagram
     
     AbstractEmployee <|-- HourlyEmployee:extends
     AbstractEmployee <|-- SalaryEmployee:extends
-    AbstractEmployee <|.. IEmployee:implements
+    IEmployee <|.. AbstractEmployee:implements
     IPayStub <|.. PayStub:implements
     ITimeCard <|.. TimeCard:implements
     
@@ -251,9 +251,15 @@ classDiagram
 
 Take time to reflect on how your design has changed. Write in *prose* (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two.
 
+
+Answer:
+
+
 During the initial design phase, my focus was mainly on identifying the methods required by the three interfaces, and what fields and methods each abstract/concrete class needed. I also thought about how each class contributed to the pay calculation formula. AbstractEmployee handles the payroll logic, TimeCard provides the hours worked, and PayStub stores the result.
 
+
 The overall structure of the 3 interfaces and 5 abstract/concrete classes was relatively close to the final one. The main changes were that PayStub was updated to store individual fields instead of an AbstractEmployee reference. It’s easier to build the constructor with already calculated values. calculateGrossPay() was added separately from runPayroll() to handle the gross pay logic.
+
 
 In the final design, I added more detail to Builder and PayrollGenerator as I only fully understood
 their relationships with other classes after writing all the code. The most challenging part for me was building a image of the entire program flow before writing any code. It required repeatedly reading and reviewing the provided files to understand how everything connected together. If I were to do this again, I would start by tracing through main() to clarify the overall flow, and make sure to specify the return type of every method during the design phase.

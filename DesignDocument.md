@@ -97,6 +97,7 @@ classDiagram
     
     
     
+    
 ```
 
 
@@ -128,6 +129,117 @@ Go through your completed code, and update your class diagram to reflect the fin
 > [!WARNING]
 > If you resubmit your assignment for manual grading, this is a section that often needs updating. You should double check with every resubmit to make sure it is up to date.
 
+```mermaid
+classDiagram
+    class IEmployee {
+        <<interface>>
+        +getName() String
+        +getID() String
+        +getPayRate() double
+        +getEmployeeType() String
+        +getYTDEarnings() double
+        +getYTDTaxesPaid() double
+        +getPretaxDeductions() double
+        +runPayroll(hoursWorked) IPayStub
+        +toCSV() String
+    }
+
+    class IPayStub {
+        <<interface>>
+        +getPay() double
+        +getTaxesPaid() double
+        +toCSV() String
+    }
+
+    class ITimeCard {
+        <<interface>>
+        +getEmployeeID() String
+        +getHoursWorked() double
+    }
+
+    class AbstractEmployee {
+        <<abstract>>
+        -name String
+        -id String
+        -payRate double
+        -ytdEarnings double
+        -ytdTaxesPaid double
+        -pretaxDeductions double
+        -TAX_RATE double
+
+        #calculateGrossPay(hoursWorked) double
+        +runPayroll(hoursWorked) IPayStub
+        +toCSV() String
+    }
+
+    class HourlyEmployee {
+        +getEmployeeType() String
+        #calculateGrossPay(hoursWorked) double
+    }
+
+    class SalaryEmployee {
+        +getEmployeeType() String
+        #calculateGrossPay(hoursWorked) double
+    }
+
+    class PayStub {
+        -employeeName String
+        -netPay double
+        -taxes double
+        -ytdEarnings double
+        -ytdTaxesPaid double
+        +getPay() double
+        +getTaxesPaid() double
+        +toCSV() String
+    }
+
+    class TimeCard {
+        -employeeID String
+        -hoursWorked double
+        +getEmployeeID() String
+        +getHoursWorked() double
+    }
+
+    class Builder {
+        +buildEmployeeFromCSV(csv) IEmployee
+        +buildTimeCardFromCSV(csv) ITimeCard
+    }
+
+
+    class PayrollGenerator {
+        -DEFAULT_EMPLOYEE_FILE String
+        -DEFAULT_PAYROLL_FILE String
+        -DEFAULT_TIME_CARD_FILE String
+        +main(args String[]) void
+    }
+
+    class FileUtil {
+        +EMPLOYEE_HEADER String
+        +PAY_STUB_HEADER String
+        +readFileToList(file String) List
+        +writeFile(outFile String, lines List) void
+        +writeFile(outFile String, lines List, backup boolean) void
+    }
+
+    PayrollGenerator ..> IEmployee
+    PayrollGenerator ..> ITimeCard
+    PayrollGenerator ..> IPayStub
+    PayrollGenerator ..> Builder
+    PayrollGenerator ..> FileUtil
+
+
+    IEmployee <|.. AbstractEmployee
+    IPayStub <|.. PayStub
+    ITimeCard <|.. TimeCard
+    AbstractEmployee <|-- HourlyEmployee
+    AbstractEmployee <|-- SalaryEmployee
+    Builder ..> IEmployee
+    Builder ..> ITimeCard
+    AbstractEmployee ..> IPayStub
+```
+
+
+
 
 
 
@@ -137,4 +249,11 @@ Go through your completed code, and update your class diagram to reflect the fin
 > [!IMPORTANT]
 > The value of reflective writing has been highly researched and documented within computer science, from learning new information to showing higher salaries in the workplace. For this next part, we encourage you to take time, and truly focus on your retrospective.
 
-Take time to reflect on how your design has changed. Write in *prose* (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two. 
+Take time to reflect on how your design has changed. Write in *prose* (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two.
+
+During the initial design phase, my focus was mainly on identifying the methods required by the three interfaces, and what fields and methods each abstract/concrete class needed. I also thought about how each class contributed to the pay calculation formula. AbstractEmployee handles the payroll logic, TimeCard provides the hours worked, and PayStub stores the result.
+
+The overall structure of the 3 interfaces and 5 abstract/concrete classes was relatively close to the final one. The main changes were that PayStub was updated to store individual fields instead of an AbstractEmployee reference. It’s easier to build the constructor with already calculated values. calculateGrossPay() was added separately from runPayroll() to handle the gross pay logic.
+
+In the final design, I added more detail to Builder and PayrollGenerator as I only fully understood
+their relationships with other classes after writing all the code. The most challenging part for me was building a image of the entire program flow before writing any code. It required repeatedly reading and reviewing the provided files to understand how everything connected together. If I were to do this again, I would start by tracing through main() to clarify the overall flow, and make sure to specify the return type of every method during the design phase.

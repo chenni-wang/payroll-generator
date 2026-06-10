@@ -10,7 +10,7 @@ This report helps you demonstrate your understanding of the concepts. You should
 
 2. Why would you declare `List<IEmployee>` instead of `ArrayList<HourlyEmployee>`?
 
-Declaring IEmployee interface allows the object to store any class that implements the IEmployee
+    Declaring IEmployee interface allows the object to store any class that implements the IEmployee
 interface. It accepts both HourlyEmployee and SalaryEmployee. However, declaring the object to be ArrayList<HourlyEmployee>
 means that the object cannot accepts SalaryEmployee. In addition, declaring List which is an interface instead of ArrayList which is a concrete class
 allows future implementation more flexible.
@@ -62,12 +62,17 @@ Think through the issue / making sure to cite any resources you use to help you 
 The answer to this is mostly open. We ask that you cite at least two sources to show your understanding of the issue. The TAs will also give feedback on your answer, though will be liberal in grading as long as you show a good faith effort to understand the issue and making an effort to think about how your design to could help meet your employer's goals of salary equity. 
 
 
+Answer:
+
 
 Pay disparities have been studied over the past century. One of the major factors is the gender wage gap. According to the Economic Policy Institute, the gender wage gap widened slightly in 2025. Women are earning approximately 18.6% less than men on average(Gould & Kandra, 2025). Research has also shown that women receive less pay than men even after controlling for variables such as educational background and work experience (Wingfield, 2025). This gap can be further amplified by ethnicity, marital status, nature of industry sector and many other factors. Thus, investigating whether pay inequality exists in a company requires more classification information. The employee file would need to store additional categorical data such as gender, ethnicity, education background, job level, employment type (full-time or part-time), and department.
+
 
 Before calling the runPayroll() method, an additional method should be introduced. Since different employees may have different pretax deductions, gross pay should be used as the basis for comparison. The average gross pay among employees of the same department and job level should be calculated. Each employee's gross pay is then compared to this average. If the pay deviates from the mean by a certain threshold, such as 2 standard deviations, it would be denoted as an outlier. The method could then return a string variable such as "UNDERPAY" or "OVERPAY" to alert the company for further review.
 
 
 Citations:
+
 Cohn, E. and Gould, E. (2026) The gender pay gap widened slightly in 2025: How trump’s first year in office hurt women and what states can do to fix it. Available at: https://www.epi.org/blog/the-gender-pay-gap-widened-slightly-in-2025-how-trumps-first-year-in-office-hurt-women-and-what-states-can-do-to-fix-it/ (Accessed: 08 June 2026).
+
 Wingfield, A.H. (2025) The gender wage gap is widening again-can our policies explain why?, Forbes. Available at: https://www.forbes.com/sites/adiaharveywingfield/2025/10/29/the-gender-wage-gap-is-widening-again-can-our-policies-explain-why/ (Accessed: 08 June 2026). 

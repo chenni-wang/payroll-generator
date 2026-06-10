@@ -9,7 +9,95 @@ If you are using mermaid markup to generate your class diagrams, you may edit th
 
 Include a UML class diagram of your initial design for this assignment. If you are using the mermaid markdown, you may include the code for it here. For a reminder on the mermaid syntax, you may go [here](https://mermaid.js.org/syntax/classDiagram.html)
 
-
+```mermaid
+classDiagram
+    class AbstractEmployee{
+        <<abstract>>
+        #name:String
+        #id:String
+        #payRate:double
+        #ytdEarnings:double
+        #ytdTaxesPaid:double
+        #preTaxDeductions:double
+        
+        +runPayroll(hours):IpayStub
+    }
+    
+    class IEmployee{
+        <<interface>>
+        +getName:String
+        +getID():String
+        +getPayRate():double
+        +getYTDEarnings():double
+        +getYTDTaxesPaid():double
+        +runPayroll(hours):IPayStub
+        +toCSV():String
+    }
+    
+    class ITimeCard{
+        <<interface>>
+        +getEmployeeID():String
+        +getHoursWorked():double
+    }
+    
+    class TimeCard{
+        -employeeID:String
+        -hoursWorked:double
+        +getEmployeeID():String
+        +getHoursWorked():double
+    }
+    
+    class IPayStub{
+        <<interface>>
+        +getPay():double
+        +getTaxesPaid:double
+        +toCSV():String
+    }
+    
+    class PayStub{
+        -employee: AbstractEmployee
+        -netPay:double
+        -taxes:double
+        +getPay():double
+        +getTaxesPaid:double
+        +toCSV():String
+    }
+    
+    class HourlyEmployee{
+        +getEmployeeType()
+        #calculateGrossPay()
+    }
+    
+    class SalaryEmployee{
+        +getEmployeeType()
+        #calculateGrossPay()
+    }
+    
+    class Builder{
+        +buildEmployeeFromCSV(csv)
+        +buildTimeCardFromCSV(csv)
+    }
+    
+    class FileUtil{
+        
+        
+    }
+    
+    class PayrollGenerator{
+        +main $ void
+    }
+    
+    AbstractEmployee <|-- HourlyEmployee:extends
+    AbstractEmployee <|-- SalaryEmployee:extends
+    AbstractEmployee <|.. IEmployee:implements
+    IPayStub <|.. PayStub:implements
+    ITimeCard <|.. TimeCard:implements
+    
+    
+    
+    
+    
+```
 
 
 

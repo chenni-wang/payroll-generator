@@ -22,6 +22,26 @@ public final class Builder {
      * @return the employee object
      */
     public static IEmployee buildEmployeeFromCSV(String csv) {
+        String[] parts = csv.split(",");
+        try{
+            String type = parts[0].trim();
+            String name = parts[1].trim();
+            String id = parts[2].trim();
+            double payRate = Double.parseDouble(parts[3].trim());
+            double pretaxDeductions = Double.parseDouble(parts[4].trim());
+            double ytdE = Double.parseDouble(parts[5].trim());
+            double ytdT = Double.parseDouble(parts[6].trim());
+
+            if(type.equals("HOURLY")){
+                return new HourlyEmployee(name,id,payRate,ytdE,ytdT,pretaxDeductions);
+            }
+            else {
+                return new SalaryEmployee(name,id,payRate,ytdE,ytdT,pretaxDeductions);
+            }
+
+        }catch(NumberFormatException e){
+            System.err.println("String cannot convert to double:"+csv);
+        }
 
         return null;
     }
@@ -35,7 +55,18 @@ public final class Builder {
      * @return a TimeCard object
      */
     public static ITimeCard buildTimeCardFromCSV(String csv) {
-    
+        String[] parts = csv.split(",");
+
+        try{
+            String id = parts[0].trim();
+            double hoursworked = Double.parseDouble(parts[1].trim());
+            return new TimeCard(id,hoursworked);
+
+        }
+        catch(NumberFormatException e){
+            System.err.println("string fail converting to double:"+csv);
+
+        }
         return null;
     }
 }

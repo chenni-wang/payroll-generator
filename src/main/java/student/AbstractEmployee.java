@@ -34,8 +34,14 @@ public abstract class AbstractEmployee implements IEmployee {
      */
     private static final double TAX_RATE = 0.2265;
 
-    /*
-     *This is a constructor for the abstractemployee class.
+    /**
+     * This is a constructor for the abstractemployee class.
+     * @param name Employee's name
+     * @param id Employee's ID
+     * @param payRate Employee's pay rate
+     * @param ytdTaxesPaid Employee's year-to-date taxes paid
+     * @param pretaxDeductions Employee's pretax deductions
+     * @param ytdEarnings Employee's year-to-date earnings
      */
     public AbstractEmployee(String name, String id, double payRate,
                             double ytdEarnings, double ytdTaxesPaid, double pretaxDeductions) {

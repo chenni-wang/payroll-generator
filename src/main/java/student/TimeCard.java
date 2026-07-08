@@ -10,9 +10,9 @@ public class TimeCard implements ITimeCard {
     /** The hours worked by the employee. */
     private double hoursWorked;
 
-    /*
+    /**
      * This is a constructor for TimeCard
-     * @param hoursWork hours worked by the employee
+     * @param hoursWorked hours worked by the employee
      * @param employeeID employee's ID
      */
     public TimeCard(String employeeID, double hoursWorked) {

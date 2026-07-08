@@ -15,7 +15,7 @@ public class PayStub implements IPayStub {
     /** The year-to-date taxes paid. */
     private double ytdTaxesPaid;
 
-    /*
+    /**
      * This is a constructor for PayStub.
      * @param employeeName employee's name
      * @param netPay pay for the current period

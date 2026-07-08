@@ -22,13 +22,13 @@ public final class Builder {
      * @return the employee object
      */
     public static IEmployee buildEmployeeFromCSV(String csv) {
-        if (csv == null || csv.isBlank()){
+        if (csv == null || csv.isBlank()) {
             return null;
         }
 
         String[] parts = csv.split(",");
 
-        if (parts.length != 7){
+        if (parts.length != 7) {
             return null;
         }
 

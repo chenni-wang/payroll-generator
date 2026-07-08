@@ -4,10 +4,15 @@ package student;
  * This class represents a pay stub for one employee
  */
 public class PayStub implements IPayStub {
+    /** The employee's name. */
     private String employeeName;
+    /** The net pay. */
     private double netPay;
+    /** The taxes paid. */
     private double taxes;
+    /** The year-to-date earnings. */
     private double ytdEarnings;
+    /** The year-to-date taxes paid. */
     private double ytdTaxesPaid;
 
     /*
@@ -22,7 +27,7 @@ public class PayStub implements IPayStub {
                    double netPay,
                    double taxes,
                    double ytdEarnings,
-                   double ytdTaxesPaid){
+                   double ytdTaxesPaid) {
         this.employeeName = employeeName;
         this.netPay = netPay;
         this.taxes = taxes;
@@ -31,21 +36,21 @@ public class PayStub implements IPayStub {
     }
 
     @Override
-    public double getPay(){
+    public double getPay() {
         return netPay;
     }
 
     @Override
-    public double getTaxesPaid(){
+    public double getTaxesPaid() {
         return taxes;
     }
 
     @Override
     public String toCSV() {
-        return employeeName+","
-                +netPay+","
-                +taxes+","
-                +ytdEarnings+","
-                +ytdTaxesPaid;
+        return employeeName + ","
+                + netPay + ","
+                + taxes + ","
+                + ytdEarnings + ","
+                + ytdTaxesPaid;
     }
 }

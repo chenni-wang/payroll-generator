@@ -1,17 +1,18 @@
 package student;
 
 /*
-*This class represents an employee whose pay is calculated by hoursworked
+ *This class represents an employee whose pay is calculated by hoursworked
  */
 public class HourlyEmployee extends AbstractEmployee {
     /**
      * This is a constructor for HourlyEmployee.
-     * @param name Employee's name
-     * @param id Employee's ID
-     * @param payRate Employee's pay rate
-     * @param pretaxDeductions Employee's pretax deductions
-     * @param ytdEarnings Employee's year-to-date earnings
      *
+     * @param name             Employee's name
+     * @param id               Employee's ID
+     * @param payRate          Employee's pay rate
+     * @param pretaxDeductions Employee's pretax deductions
+     * @param ytdEarnings      Employee's year-to-date earnings
+     * @param ytdTaxesPaid  Employee's year-to-date taxes paid
      */
     public HourlyEmployee(String name, String id, double payRate,
                           double ytdEarnings, double ytdTaxesPaid,

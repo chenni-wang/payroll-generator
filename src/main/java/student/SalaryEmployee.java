@@ -6,6 +6,12 @@ package student;
 public class SalaryEmployee extends AbstractEmployee {
     /**
      * This is a constructor for SalaryEmployee.
+     * @param name employee name
+     * @param id employee ID
+     * @param payRate annual salary
+     * @param ytdEarnings year-to-date earnings
+     * @param ytdTaxesPaid year-to-date taxes paid
+     * @param pretaxDeductions pretax deductions
      */
     public SalaryEmployee(String name, String id, double payRate,
                           double ytdEarnings, double ytdTaxesPaid,

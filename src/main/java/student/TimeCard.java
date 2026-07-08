@@ -5,7 +5,9 @@ package student;
  */
 
 public class TimeCard implements ITimeCard {
+    /** The employee's ID. */
     private String employeeID;
+    /** The hours worked by the employee. */
     private double hoursWorked;
 
     /*
@@ -13,18 +15,18 @@ public class TimeCard implements ITimeCard {
      * @param hoursWork hours worked by the employee
      * @param employeeID employee's ID
      */
-    public TimeCard(String employeeID, double hoursWorked){
+    public TimeCard(String employeeID, double hoursWorked) {
         this.employeeID = employeeID;
         this.hoursWorked = hoursWorked;
     }
 
     @Override
-    public String getEmployeeID(){
+    public String getEmployeeID() {
         return employeeID;
     }
 
     @Override
-    public double getHoursWorked(){
+    public double getHoursWorked() {
         return hoursWorked;
     }
 }

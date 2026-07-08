@@ -4,24 +4,38 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public abstract class AbstractEmployee implements IEmployee {
-    /** Employee's name. */
+    /**
+     * Employee's name.
+     */
     private String name;
-    /** Employee's ID. */
+    /**
+     * Employee's ID.
+     */
     private String id;
-    /** Employee's pay rate. */
+    /**
+     * Employee's pay rate.
+     */
     private double payRate;
-    /** Employee's year-to-date earnings. */
+    /**
+     * Employee's year-to-date earnings.
+     */
     private double ytdEarnings;
-    /** Employee's year-to-date taxes paid. */
+    /**
+     * Employee's year-to-date taxes paid.
+     */
     private double ytdTaxesPaid;
-    /** Employee's pretax deductions. */
+    /**
+     * Employee's pretax deductions.
+     */
     private double pretaxDeductions;
 
-    /** tax=0.0145+0.062+0.15 */
+    /**
+     * tax=0.0145+0.062+0.15.
+     */
     private static final double TAX_RATE = 0.2265;
 
     /*
-     *This is a constructor for the abstractemployee
+     *This is a constructor for the abstractemployee class.
      */
     public AbstractEmployee(String name, String id, double payRate,
                             double ytdEarnings, double ytdTaxesPaid, double pretaxDeductions) {
@@ -167,8 +181,8 @@ public abstract class AbstractEmployee implements IEmployee {
      */
     @Override
     public String toCSV() {
-        return getEmployeeType() + "," + name + "," + id + "," + payRate + "," +
-                pretaxDeductions + "," + ytdEarnings + "," + ytdTaxesPaid;
+        return getEmployeeType() + "," + name + "," + id + "," + payRate + ","
+                + pretaxDeductions + "," + ytdEarnings + "," + ytdTaxesPaid;
     }
 
 }

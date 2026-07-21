@@ -11,7 +11,7 @@ public class TimeCard implements ITimeCard {
     private double hoursWorked;
 
     /**
-     * This is a constructor for TimeCard
+     * This is a constructor for TimeCard.
      * @param hoursWorked hours worked by the employee
      * @param employeeID employee's ID
      */
